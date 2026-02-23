@@ -1,12 +1,15 @@
 public class ReportPrinter {
-    public void print(StudentProfile s, EligibilityEngineResult r) {
-        System.out.println("Student: " + s.name + " (CGR=" + String.format("%.2f", s.cgr)
-                + ", attendance=" + s.attendancePct + ", credits=" + s.earnedCredits
-                + ", flag=" + LegacyFlags.nameOf(s.disciplinaryFlag) + ")");
-        System.out.println("RESULT: " + r.status);
-        for (String reason : r.reasons) System.out.println("- " + reason);
-        if (r.reasons.isEmpty() && "ELIGIBLE".equals(r.status)) {
-            // keep behavior stable even if empty
+    public void print(StudentProfile s, EligibilityResult result) {
+        System.out.println("Student: " + s.getName() + " (CGR=" + String.format("%.2f", s.getCgr())
+                + ", attendance=" + s.getAttendancePct() + ", credits=" + s.getEarnedCredits()
+                + ", flag=" + LegacyFlags.nameOf(s.getDisciplinaryFlag()) + ")");
+        if (result.isEligible()) {
+            System.out.println("RESULT: ELIGIBLE");
+        } else {
+            System.out.println("RESULT: NOT ELIGIBLE");
+            for (RuleViolation v : result.getViolations()) {
+                System.out.println("- " + v.getMessage());
+            }
         }
     }
 }
