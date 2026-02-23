@@ -1,6 +1,14 @@
 public class ExportRequest {
-    public final String title;
-    public final String body;
+    private final String title;
+    private final String body;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getBody() {
+        return body;
+    }
 
     public ExportRequest(String title, String body) {
         this.title = title;
