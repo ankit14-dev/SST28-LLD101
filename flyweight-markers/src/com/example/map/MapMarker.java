@@ -19,13 +19,11 @@ public class MapMarker {
     private final MarkerStyle style;
 
     public MapMarker(double lat, double lng, String label,
-                     String shape, String color, int size, boolean filled) {
+                    MarkerStyle style) {
         this.lat = lat;
         this.lng = lng;
         this.label = label;
-
-        // BROKEN: per-marker allocation
-        this.style = new MarkerStyle(shape, color, size, filled);
+        this.style = style;
     }
 
     public double getLat() { return lat; }

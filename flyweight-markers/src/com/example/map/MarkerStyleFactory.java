@@ -8,19 +8,23 @@ import java.util.Map;
  * Implement Flyweight factory that caches MarkerStyle by a stable key.
  *
  * Suggested key format:
- *   shape + "|" + color + "|" + size + "|" + (filled ? "F" : "O")
+ * shape + "|" + color + "|" + size + "|" + (filled ? "F" : "O")
  *
  * After refactor:
- * - MapDataSource should call this factory to obtain shared MarkerStyle instances.
+ * - MapDataSource should call this factory to obtain shared MarkerStyle
+ * instances.
  */
 public class MarkerStyleFactory {
 
-    private final Map<String, MarkerStyle> cache = new HashMap<>();
+    private static final Map<String, MarkerStyle> cache = new HashMap<>();
 
-    public MarkerStyle get(String shape, String color, int size, boolean filled) {
+    public static MarkerStyle get(String shape, String color, int size, boolean filled) {
         String key = shape + "|" + color + "|" + size + "|" + (filled ? "F" : "O");
         // TODO: return cached instance if present; otherwise create, cache, and return.
-        return new MarkerStyle(shape, color, size, filled);
+        if (!cache.containsKey(key)) {
+            cache.put(key, new MarkerStyle(shape, color, size, filled));
+        }
+        return cache.get(key);
     }
 
     public int cacheSize() {
