@@ -1,4 +1,4 @@
-Requirements:
+# Requirements
 
 Create a Snake and Ladder application.
 The application should take input n(size of the board to be nxn), x(number of players), difficulty_level(easy/hard))  from the user.

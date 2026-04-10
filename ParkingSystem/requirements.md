@@ -1,4 +1,4 @@
-**Multilevel Parking Lot Design Problem Statement**
+# Multilevel Parking Lot Design Problem Statement
 
 Design a **multilevel parking lot system** with the following requirements:
 
@@ -31,8 +31,6 @@ Design a **multilevel parking lot system** with the following requirements:
    For example, if a bike is parked in a medium slot, the charge should be calculated using the **medium slot rate**.
 
 ---
-
-##
 
 ##
 
